@@ -1,38 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Produtos.css";
 import * as FcIcons from "react-icons/fc";
+import axios from "axios";
 
 export default function Produtos() {
-  var stock = 0;
+  const [listaProdutos, setListaProdutos] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/").then((response) => {
+      setListaProdutos(response.data);
+    });
+  }, []);
 
   return (
     <div className="container main-content">
-      <div className="row product">
-        <div className="col-md-2">
-          <img
-            className="rounded"
-            src="../../public/logo192.png"
-            border="1px solid"
-          />
-        </div>
-        <div className="col-md-6 product-detail">
-          <h3>Nome do produto</h3>
-          <h6>Marca do produto</h6>
-          {stock == 0 ? (
-            <h7>
-              STOCK : <FcIcons.FcApproval />
-            </h7>
-          ) : (
-            <h7>
-              STOCK : <FcIcons.FcCancel />
-            </h7>
-          )}
-        </div>
-        <div className="col-md-2 product-price">Preco do produto €</div>
-        <div className="col-md-2 btn">
-          <FcIcons.FcNext size="80px" />
-        </div>
-      </div>
+      {listaProdutos.map((produto) => {
+        return (
+          <div className="row product">
+            <div className="col-md-2">
+              <img
+                className="rounded"
+                src={produto.fotografia}
+                alt=""
+                width="125px"
+                border="1px solid"
+              />
+            </div>
+            <div className="col-md-6 product-detail">
+              <h3>{produto.nome}</h3>
+              <h6>{produto.marca}</h6>
+              {produto.stock == 1 ? (
+                <h7>
+                  STOCK : <FcIcons.FcApproval />
+                </h7>
+              ) : (
+                <h7>
+                  STOCK : <FcIcons.FcCancel />
+                </h7>
+              )}
+            </div>
+            <div className="col-md-2 product-price">{produto.preco} €</div>
+            <div className="col-md-2 btn">
+              <FcIcons.FcNext size="80px" />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

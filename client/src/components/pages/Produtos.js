@@ -43,13 +43,13 @@ export default function Produtos() {
                 <h3>{produto.nome}</h3>
                 <h6>{produto.marca}</h6>
                 {produto.stock == 1 ? (
-                  <h7>
+                  <h6>
                     STOCK : <FcIcons.FcApproval />
-                  </h7>
+                  </h6>
                 ) : (
-                  <h7>
+                  <h6>
                     STOCK : <FcIcons.FcCancel />
-                  </h7>
+                  </h6>
                 )}
               </div>
               <div className="col-md-2 products-price">{produto.preco} €</div>

@@ -22,4 +22,14 @@ router.post("/", async (req, res) => {
   res.json(produto);
 });
 
+// Apagar um produto
+router.delete("/:byId/:id", async (req, res) => {
+  const id = req.params.id;
+  await Produtos.destroy({
+    where: {
+      idproduto: id,
+    },
+  });
+});
+
 module.exports = router;

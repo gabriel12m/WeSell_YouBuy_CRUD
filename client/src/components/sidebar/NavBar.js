@@ -1,3 +1,7 @@
+/*  Com este ficheiro pretende criar-se as bases para a realização da NavBar + SideBar
+    São criados vários divs e vários links com css incorporado de modo a otimizar o tempo
+    e aumentar a qualidade visual dos mesmos*/
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -57,6 +61,8 @@ const SidebarNav = styled.nav`
 const SidebarWrap = styled.div`
   width: 100%;
 `;
+
+// esta função gera todos os componentes que apresentam e compõem a Navbar
 
 const NavBar = () => {
   const [sidebar, setSidebar] = useState(false);

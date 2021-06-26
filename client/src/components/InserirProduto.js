@@ -2,11 +2,20 @@ import React, { useState } from "react";
 import "./InserirProduto.css";
 import HeaderInsert from "./HeaderInsert";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Popup from "./popup/Popup";
 import * as Yup from "yup";
 import axios from "axios";
 
+/* Função que permite adicionar novos produtos à base de dados
+   Nesta função é utilizado o Formik juntamente com o Yup de modo
+   a conseguir criar um fornulário que imponha algumas restrições ao utilizador */
+
 export default function InserirProduto() {
-  const [listaProdutos, setListaProdutos] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   const initialValues = {
     nome: "",
@@ -36,6 +45,7 @@ export default function InserirProduto() {
     axios.post("http://localhost:3001/", dados).then((response) => {
       console.log("Funcionou");
     });
+    togglePopup();
   };
 
   return (
@@ -99,6 +109,18 @@ export default function InserirProduto() {
             <button type="submit" id="bt" className="btn btn-primary">
               Inserir Produto
             </button>
+            <div>
+              {isOpen && (
+                <Popup
+                  content={
+                    <>
+                      <b className="popup">INSERIDO COM SUCESSO!</b>
+                    </>
+                  }
+                  handleClose={togglePopup}
+                />
+              )}
+            </div>
           </Form>
         </Formik>
       </div>

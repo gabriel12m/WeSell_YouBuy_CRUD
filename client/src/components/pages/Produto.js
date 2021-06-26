@@ -15,7 +15,7 @@ export default function Produto() {
     axios.get(`http://localhost:3001/byId/${id}`).then((response) => {
       setProduto(response.data);
     });
-  }, []);
+  });
 
   // função que permite apagar o produto com base no seu id
   const apagaProduto = (id) => {
@@ -30,7 +30,12 @@ export default function Produto() {
         </div>
         <div className="row">
           <div className=" botoes">
-            <button className="btn btn-warning btE">
+            <button
+              className="btn btn-warning btE"
+              onClick={() => {
+                history.push(`/editarproduto/${id}`);
+              }}
+            >
               <b>Editar Produto</b>
             </button>
             <button

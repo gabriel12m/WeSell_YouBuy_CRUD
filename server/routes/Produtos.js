@@ -22,6 +22,17 @@ router.post("/", async (req, res) => {
   res.json(produto);
 });
 
+// Update dos dados de um produto
+router.put("/:byId/:id", async (req, res) => {
+  const id = req.params.id;
+  const produto = req.body;
+  await Produtos.update(produto, {
+    where: {
+      idproduto: id,
+    },
+  });
+});
+
 // Apagar um produto
 router.delete("/:byId/:id", async (req, res) => {
   const id = req.params.id;

@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./InserirProduto.css";
-import HeaderInsert from "../HeaderInsert";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import Popup from "../popup/Popup";
 import * as Yup from "yup";
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 
-/* Função que permite adicionar novos produtos à base de dados
-   Nesta função é utilizado o Formik juntamente com o Yup de modo
-   a conseguir criar um fornulário que imponha algumas restrições ao utilizador */
+/* Função que permite editar os dados de um produto já existente */
 
-export default function InserirProduto() {
-  // variáveis para abrir e fechar o popup
-  const [isOpen, setIsOpen] = useState(false);
+export default function EditarProduto() {
+  let { id } = useParams();
+  const [produto, setProduto] = useState({});
+  let history = useHistory();
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
+  // esta função obtém o id e os dados do produto
+  useEffect(() => {
+    axios.get(`http://localhost:3001/byId/${id}`).then((response) => {
+      setProduto(response.data);
+    });
+  });
 
   const initialValues = {
-    nome: "",
-    preco: "",
-    fotografia: "",
-    detalhes: "",
-    stock: "",
-    marca: "",
+    nome: produto.nome,
+    preco: produto.preco,
+    fotografia: produto.fotografia,
+    detalhes: produto.detalhes,
+    stock: produto.stock,
+    marca: produto.marca,
   };
 
   // nesta variável são feitas as demais validações
@@ -45,25 +45,19 @@ export default function InserirProduto() {
     marca: Yup.string().required("Preenchimento Obrigatório!"),
   });
 
-  // este onSubmit vai enviar os dados dos campos preenchidos para a base de dados
-  // e vai apresentar no Layout uma mensagem de sucesso e redirecionar o utilizador para a página inicial
+  // este onSubmit vai alterar os dados dos campos preenchidos do produto selecionado na base de dados
   const onSubmit = (dados) => {
-    axios.post("http://localhost:3001/", dados).then((response) => {
-      history.push("/"); // redireciona o utilizador para a página inicial após submeter o produto
-    });
-    togglePopup();
+    axios.put(`http://localhost:3001/byId/${id}`, dados).then((response) => {});
   };
-
-  let history = useHistory();
 
   return (
     <div>
-      <HeaderInsert />
       <div className="container_post">
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
           validationSchema={validationSchema}
+          enableReinitialize={true}
         >
           <Form className="formulario">
             <label id="head">Nome :</label>
@@ -114,21 +108,14 @@ export default function InserirProduto() {
               placeholder="(Ex: Intel® Core™)"
             />
             <ErrorMessage name="marca" component="p" />
-            <button type="submit" id="bt" className="btn btn-primary">
-              Inserir Produto
+            <button
+              type="submit"
+              id="bt"
+              className="btn btn-primary"
+              onClick={onSubmit}
+            >
+              Guardar Alterações
             </button>
-            <div>
-              {isOpen && (
-                <Popup
-                  content={
-                    <>
-                      <b className="popup">INSERIDO COM SUCESSO!</b>
-                    </>
-                  }
-                  handleClose={togglePopup}
-                />
-              )}
-            </div>
           </Form>
         </Formik>
       </div>

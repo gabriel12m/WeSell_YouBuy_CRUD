@@ -11,6 +11,7 @@ import axios from "axios";
    a conseguir criar um fornulário que imponha algumas restrições ao utilizador */
 
 export default function InserirProduto() {
+  // variáveis para abrir e fechar o popup
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => {
@@ -26,6 +27,8 @@ export default function InserirProduto() {
     marca: "",
   };
 
+  // nesta variável são feitas as demais validações
+  // utilizando o Yup
   const validationSchema = Yup.object().shape({
     nome: Yup.string().required("Preenchimento Obrigatório!"),
     preco: Yup.number()
@@ -41,9 +44,11 @@ export default function InserirProduto() {
     marca: Yup.string().required("Preenchimento Obrigatório!"),
   });
 
+  // este onSubmit vai enviar os dados dos campos preenchidos para a base de dados
+  // e vai apresentar na consola e até mesmo no Layout uma mensagem de sucesso
   const onSubmit = (dados) => {
     axios.post("http://localhost:3001/", dados).then((response) => {
-      console.log("Funcionou");
+      console.log("Sucesso");
     });
     togglePopup();
   };

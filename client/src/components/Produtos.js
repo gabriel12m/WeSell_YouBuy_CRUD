@@ -1,3 +1,5 @@
+/* É através desta classe que são apresentados todos os produtos da base de dados.*/
+
 import React, { useEffect, useState } from "react";
 import "./Produtos.css";
 import Header from "./Header";
@@ -5,8 +7,11 @@ import * as FcIcons from "react-icons/fc";
 import axios from "axios";
 
 export default function Produtos() {
+  /* variáveis para poder aceder aos vários produtos da base de dados
+  e apresentar 1 a 1 na página inicial */
   const [listaProdutos, setListaProdutos] = useState([]);
 
+  // é através do axios.get que é feita a query para ir buscar os dados à base de dados
   useEffect(() => {
     axios.get("http://localhost:3001/").then((response) => {
       setListaProdutos(response.data);
@@ -17,6 +22,8 @@ export default function Produtos() {
     <div>
       <Header />
       <div className="container main-content">
+        {/* Este listaProdutos.map é um array que vai mostrar produto a produto
+      à medida que este (variável produto) vai avanaçando pelo array*/}
         {listaProdutos.map((produto) => {
           return (
             <div className="row product">

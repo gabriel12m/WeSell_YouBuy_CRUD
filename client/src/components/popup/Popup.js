@@ -1,4 +1,6 @@
-/* Esta classe não é da minha autoria, Apenas incluí no trabalho para ter algum tipo de animação ao inserir um produto. */
+/* Esta classe não é da minha autoria, Apenas incluí no trabalho para ter algum tipo de animação ao inserir um produto. 
+   url: https://www.cluemediator.com/create-simple-popup-in-reactjs
+*/
 
 import React from "react";
 import "./Popup.css";

@@ -1,8 +1,9 @@
 /* É através desta classe que são apresentados todos os produtos da base de dados.*/
 
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import "./Produtos.css";
-import Header from "./Header";
+import Header from "../Header";
 import * as FcIcons from "react-icons/fc";
 import axios from "axios";
 
@@ -10,6 +11,8 @@ export default function Produtos() {
   /* variáveis para poder aceder aos vários produtos da base de dados
   e apresentar 1 a 1 na página inicial */
   const [listaProdutos, setListaProdutos] = useState([]);
+
+  let history = useHistory();
 
   // é através do axios.get que é feita a query para ir buscar os dados à base de dados
   useEffect(() => {
@@ -50,7 +53,12 @@ export default function Produtos() {
                 )}
               </div>
               <div className="col-md-2 product-price">{produto.preco} €</div>
-              <div className="col-md-2 btn">
+              <div
+                className="col-md-2 btn"
+                onClick={() => {
+                  history.push(`/produto/${produto.idproduto}`);
+                }}
+              >
                 <FcIcons.FcNext size="80px" />
               </div>
             </div>

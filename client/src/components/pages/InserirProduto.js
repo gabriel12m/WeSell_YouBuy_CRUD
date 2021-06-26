@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./InserirProduto.css";
-import HeaderInsert from "./HeaderInsert";
+import HeaderInsert from "../HeaderInsert";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import Popup from "./popup/Popup";
+import Popup from "../popup/Popup";
 import * as Yup from "yup";
 import axios from "axios";
 

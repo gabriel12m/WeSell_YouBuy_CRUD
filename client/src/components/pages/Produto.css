@@ -1,0 +1,50 @@
+#root {
+    background-color: #5A189A;
+}
+
+.main-content {
+    margin-top: 2rem;
+    background-color: #5A189A;
+}
+
+.name {
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 40px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.product {
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem 0;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+
+}
+
+.product-detail {
+    padding-top: 75px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.product-price {
+    padding-top: 75px;
+    font-weight: bold;
+    font-size: 250%;
+}
+
+.product-description {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    text-align: justify;
+}

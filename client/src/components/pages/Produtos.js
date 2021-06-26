@@ -24,12 +24,12 @@ export default function Produtos() {
   return (
     <div>
       <Header />
-      <div className="container main-content">
+      <div className="container main-content-all">
         {/* Este listaProdutos.map é um array que vai mostrar produto a produto
       à medida que este (variável produto) vai avanaçando pelo array*/}
         {listaProdutos.map((produto) => {
           return (
-            <div className="row product">
+            <div className="row products">
               <div className="col-md-3">
                 <img
                   className="rounded"
@@ -39,7 +39,7 @@ export default function Produtos() {
                   border="1px solid"
                 />
               </div>
-              <div className="col-md-5 product-detail">
+              <div className="col-md-5 products-detail">
                 <h3>{produto.nome}</h3>
                 <h6>{produto.marca}</h6>
                 {produto.stock == 1 ? (
@@ -52,7 +52,7 @@ export default function Produtos() {
                   </h7>
                 )}
               </div>
-              <div className="col-md-2 product-price">{produto.preco} €</div>
+              <div className="col-md-2 products-price">{produto.preco} €</div>
               <div
                 className="col-md-2 btn"
                 onClick={() => {

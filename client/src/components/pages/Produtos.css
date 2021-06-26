@@ -2,12 +2,12 @@
     background-color: #240046;
 }
 
-.main-content {
+.main-content-all {
     margin-top: 2rem;
     background-color: #240046;
 }
 
-.product {
+.products {
     color: black;
 
     border: 1px solid #ccc;
@@ -18,12 +18,12 @@
 
 }
 
-.product-detail {
+.products-detail {
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
 
-.product-price {
+.products-price {
     font-weight: bold;
     font-size: 125%;
 }

@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Popup from "../popup/Popup";
 import * as Yup from "yup";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 /* Função que permite adicionar novos produtos à base de dados
    Nesta função é utilizado o Formik juntamente com o Yup de modo
@@ -45,13 +46,15 @@ export default function InserirProduto() {
   });
 
   // este onSubmit vai enviar os dados dos campos preenchidos para a base de dados
-  // e vai apresentar na consola e até mesmo no Layout uma mensagem de sucesso
+  // e vai apresentar no Layout uma mensagem de sucesso e redirecionar o utilizador para a página inicial
   const onSubmit = (dados) => {
     axios.post("http://localhost:3001/", dados).then((response) => {
-      console.log("Sucesso");
+      history.push("/"); // redireciona o utilizador para a página inicial após submeter o produto
     });
     togglePopup();
   };
+
+  let history = useHistory();
 
   return (
     <div>

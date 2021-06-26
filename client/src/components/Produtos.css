@@ -1,12 +1,21 @@
+#root {
+    background-color: #240046;
+}
+
 .main-content {
     margin-top: 2rem;
+    background-color: #240046;
 }
 
 .product {
+    color: black;
+
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 1rem 0;
     margin-bottom: 5px;
+    background-color: #ffffff;
+
 }
 
 .product-detail {
@@ -16,5 +25,5 @@
 
 .product-price {
     font-weight: bold;
-    font-size: 140%;
+    font-size: 125%;
 }

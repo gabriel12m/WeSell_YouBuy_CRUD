@@ -12,13 +12,14 @@ export default function EditarProduto() {
   const [produto, setProduto] = useState({});
   let history = useHistory();
 
-  // esta função obtém o id e os dados do produto
+  // esta função obtém o id e os dados do produto existente
   useEffect(() => {
     axios.get(`http://localhost:3001/byId/${id}`).then((response) => {
       setProduto(response.data);
     });
   });
 
+  // os valores apresentados no formulário são os do produto existente
   const initialValues = {
     nome: produto.nome,
     preco: produto.preco,
@@ -45,7 +46,7 @@ export default function EditarProduto() {
     marca: Yup.string().required("Preenchimento Obrigatório!"),
   });
 
-  // este onSubmit vai alterar os dados dos campos preenchidos do produto selecionado na base de dados
+  // este onSubmit vai atualizar os dados dos campos preenchidos do produto na base de dados
   const onSubmit = (dados) => {
     axios.put(`http://localhost:3001/byId/${id}`, dados).then((response) => {});
   };

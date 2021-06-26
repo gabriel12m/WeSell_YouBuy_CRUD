@@ -1,4 +1,4 @@
-/* Nesta função são feitos os routes para poder aceder às várias páginas através da Navbar*/
+/* Nesta função são feitos os routes para poder aceder às várias páginas através da Navbar e de outros cliques feitos em determinadas funcionalidades*/
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Produtos from "./components/pages/Produtos";

@@ -11,8 +11,6 @@ const bd = require("./models");
 const produtosRouter = require("./routes/Produtos");
 app.use("/", produtosRouter);
 
-app.post("/api/insert");
-
 bd.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("A correr o servidor no port 3001");

@@ -12,6 +12,7 @@ export default function Produtos() {
   e apresentar 1 a 1 na página inicial */
   const [listaProdutos, setListaProdutos] = useState([]);
 
+  // variável utilizada para navegar para um produto em específico
   let history = useHistory();
 
   // é através do axios.get que é feita a query para ir buscar os dados à base de dados

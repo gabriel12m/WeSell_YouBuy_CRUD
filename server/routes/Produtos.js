@@ -33,7 +33,7 @@ router.put("/:byId/:id", async (req, res) => {
   });
 });
 
-// Apagar um produto
+// Apagar um produto da lista
 router.delete("/:byId/:id", async (req, res) => {
   const id = req.params.id;
   await Produtos.destroy({

@@ -1,3 +1,6 @@
+// Criação da tabela Produtos na base de dados
+// Nota: é necessário criar primeiro a base de dados no MySQL Workbench com ligação ao servidor
+
 module.exports = (sequelize, DataTypes) => {
   const Produtos = sequelize.define(
     "Produtos",

@@ -11,6 +11,7 @@ export default function Produto() {
   const [produto, setProduto] = useState({});
   let history = useHistory();
 
+  // esta função obtém o id do produto
   useEffect(() => {
     axios.get(`http://localhost:3001/byId/${id}`).then((response) => {
       setProduto(response.data);

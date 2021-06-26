@@ -15,6 +15,7 @@ export default function InserirProduto() {
   // variáveis para abrir e fechar o popup
   const [isOpen, setIsOpen] = useState(false);
 
+  // esta função vai verificar se o popup está visível
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
@@ -54,6 +55,7 @@ export default function InserirProduto() {
     togglePopup();
   };
 
+  // esta variavél vai servir para navegar entre as demais "páginas" após executadas determinadas funções
   let history = useHistory();
 
   return (
